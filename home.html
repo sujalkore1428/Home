@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolHub Pro - Your Ultimate Multi-Tool App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --accent-color: #28a745;
+            --light-bg: #f8f9fa;
+            --dark-bg: #343a40;
+            --text-color: #333;
+            --light-text: #fff;
+            --border-color: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-text);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 400;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #4a5568 100%);
+            color: var(--light-text);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        
+        /* ... (CSS for hero, features, categories, and footer remains the same as previous response) ... */
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 8px var(--shadow);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* New button color for success */
+        .btn.btn-success {
+            background-color: var(--accent-color);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.5);
+        }
+        
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+        }
+        
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card i {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .categories {
+            background-color: var(--light-bg);
+            padding: 80px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 60px;
+        }
+
+        .category-card {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: var(--accent-color);
+        }
+
+        .category-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        .tool-list {
+            list-style: none;
+        }
+
+        .tool-list li {
+            padding: 8px 0;
+            border-bottom: 1px dotted var(--border-color);
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            cursor: pointer; 
+            transition: background-color 0.2s;
+        }
+        
+        /* This style block ensures the redirect link looks like a list item */
+        .tool-list li a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 100%;
+        }
+
+        .tool-list li:hover {
+            background-color: #f1f1f1;
+            padding-left: 10px;
+        }
+
+        .tool-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tool-list li::before {
+            content: '✓';
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .cta-section {
+            background: linear-gradient(45deg, var(--primary-color) 0%, #0056b3 100%);
+            color: var(--light-text);
+            padding: 80px 0;
+            text-align: center;
+            margin-top: 80px;
+            border-top-right-radius: 50px;
+            border-top-left-radius: 50px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 0px;
+        }
+
+        footer .social-links a {
+            color: var(--light-text);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        footer .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        footer p {
+            margin-top: 20px;
+        }
+        
+        /* --- MODAL STYLES --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6); 
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto; 
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: var(--primary-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            padding: 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+        }
+
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .upload-area p {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .modal-footer {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        /* --- LOADING SPINNER --- */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 30px;
+            height: 30px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+            display: none; /* Initially hidden */
+            margin-right: 10px;
+        }
+
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .process-feedback {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            min-height: 40px; /* To prevent layout jump */
+        }
+
+        /* --- Reorder specific styles --- */
+        .reorder-controls button {
+            background: #f1f1f1;
+            border: 1px solid #ccc;
+            color: var(--dark-bg);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            line-height: 1;
+            transition: background-color 0.2s;
+        }
+        .reorder-controls button:hover:not(:disabled) {
+            background: var(--primary-color);
+            color: var(--light-text);
+            border-color: var(--primary-color);
+        }
+        .reorder-controls button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">ToolHub Pro</a>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Unlock Your Productivity with ToolHub Pro</h1>
+            <p>Your all-in-one solution for PDF management, image conversion, AI assistance, and more. Simplify your workflow with powerful, intuitive tools.</p>
+            <a href="#tools" class="btn">Explore All Tools</a>
+        </div>
+    </section>
+
+    <section id="features" class="container" style="padding: 80px 0;">
+        <h2 class="section-heading">Why Choose ToolHub Pro?</h2>
+        <div class="features-grid">
+            <div class="feature-card"><i class="fas fa-magic"></i><h3>Comprehensive PDF Suite</h3><p>Merge, split, compress, edit, sign, protect, and convert PDFs with unparalleled ease and speed.</p></div>
+            <div class="feature-card"><i class="fas fa-lightbulb"></i><h3>Smart AI Assistance</h3><p>Chat with your PDFs, summarize documents, translate content, and generate questions instantly with our AI tools.</p></div>
+            <div class="feature-card"><i class="fas fa-bolt"></i><h3>Blazing Fast Performance</h3><p>Experience rapid processing for all your tasks, from large file compressions to complex conversions.</p></div>
+            <div class="feature-card"><i class="fas fa-shield-alt"></i><h3>Secure & Reliable</h3><p>Your data privacy and document security are our top priorities. Process with confidence.</p></div>
+            <div class="feature-card"><i class="fas fa-users-cog"></i><h3>Intuitive User Interface</h3><p>Designed for professionals and casual users alike, ensuring a smooth and efficient experience.</p></div>
+            <div class="feature-card"><i class="fas fa-mobile-alt"></i><h3>Accessible Anywhere, Anytime</h3><p>Access your favorite tools on any device, seamlessly, whether on desktop or mobile.</p></div>
+        </div>
+    </section>
+
+    <section id="tools" class="categories">
+        <div class="container">
+            <h2 class="section-heading">Our Powerful Tool Categories</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <h4>Core PDF Tools</h4>
+                    <ul class="tool-list">
+                        <li data-tool="Merge PDF">Merge PDF</li> 
+                        <li data-tool="Split PDF">Split PDF</li>
+                        <li data-tool="Compress PDF">Compress PDF</li>
+                        <li data-tool="Edit PDF">Edit PDF</li>
+                        <li data-tool="Sign PDF">Sign PDF</li>
+                        <li data-tool="Protect PDF">Protect PDF</li>
+                        <li data-tool="Unlock PDF">Unlock PDF</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <h4>PDF Organization & Pages</h4>
+                    <ul class="tool-list">
+                        <li data-tool="Rotate PDF pages">Rotate PDF pages</li>
+                        <li data-tool="Remove PDF pages">Remove PDF pages</li>
+                        <li data-tool="Extract PDF pages">Extract PDF pages</li>
+                        <li data-tool="Rearrange PDF pages">Rearrange PDF pages</li>
+                        <li data-tool="Add page numbers">Add page numbers</li>
+                        <li data-tool="Crop PDF">Crop PDF</li>
+                        <li data-tool="Flatten PDF">Flatten PDF</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <h4>PDF Editing & Cleanup</h4>
+                    <ul class="tool-list">
+                        <li data-tool="Add watermark">Add watermark</li>
+                        <li data-tool="Annotate PDF">Annotate PDF</li>
+                        <li data-tool="Redact PDF">Redact PDF</li>
+                        <li data-tool="Compare PDFs">Compare PDFs</li>
+                        <li data-tool="Web optimize PDF">Web optimize PDF</li>
+                        <li data-tool="Edit PDF metadata">Edit PDF metadata</li>
+                        <li data-tool="Repair PDF">Repair PDF</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <h4>PDF Size Management</h4>
+                    <ul class="tool-list">
+                        <li data-tool="Increase PDF Size">Increase PDF Size</li>
+                        <li data-tool="Reduce PDF Size">Reduce PDF Size</li>
+                        <li data-tool="Resize PDF in KB/MB">Resize PDF in KB/MB</li>
+                        <li data-tool="Compress to 400kb">Compress to 400kb</li>
+                        <li data-tool="Compress to 1MB">Compress to 1MB</li>
+                        <li data-tool="Compress to 5MB">Compress to 5MB</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <h4>PDF Conversion (To PDF)</h4>
+                    <ul class="tool-list">
+                        <li data-tool="Images to PDF">Images to PDF</li>
+                        <li data-tool="Word to PDF">Word to PDF</li>
+                        <li data-tool="PowerPoint to PDF">PowerPoint to PDF</li>
+                        <li data-tool="Excel to PDF">Excel to PDF</li>
+                        <li data-tool="JPG to PDF">JPG to PDF</li>
+                        <li data-tool="HTML to PDF">HTML to PDF</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <h4>PDF Conversion (From PDF)</h4>
+                    <ul class="tool-list">
+                        <li data-tool="PDF to Images">PDF to Images</li>
+                        <li data-tool="PDF to Word">PDF to Word</li>
+                        <li data-tool="PDF to PowerPoint">PDF to PowerPoint</li>
+                        <li data-tool="PDF to Excel">PDF to Excel</li>
+                        <li data-tool="PDF to JPG">PDF to JPG</li>
+                        <li data-tool="PDF to HTML">PDF to HTML</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <h4>Image Conversion & More</h4>
+                    <ul class="tool-list">
+                        <li data-tool="HEIC to JPG">HEIC to JPG</li>
+                        <li data-tool="WEBP to JPG">WEBP to JPG</li>
+                        <li data-tool="PDF OCR">PDF OCR</li>
+                        <li data-tool="Scan to PDF">Scan to PDF</li>
+                        <li data-tool="Create PDF job application">Create PDF job application</li>
+                        <li data-tool="Create workflow">Create workflow</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Supercharge Your Document Workflow?</h2>
+            <p>Join thousands of satisfied users who trust ToolHub Pro for their daily document and image processing needs.</p>
+            <a href="#tools" class="btn">Start Using Tools</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>&copy; 2023 ToolHub Pro. All rights reserved.</p>
+            <p>Privacy Policy | Terms of Service | About Us</p>
+        </div>
+    </footer>
+
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modalToolTitle">Tool Title Placeholder</h2>
+            
+            <div class="upload-area" id="dropArea">
+                <i class="fas fa-file-upload"></i>
+                <p>Drag & Drop your file(s) here or Click to Select</p>
+                <input type="file" id="fileInput" style="display: none;" multiple>
+            </div>
+            
+            <div id="toolControls">
+                <p style="color: var(--secondary-color); font-size: 0.9em;">*Files uploaded will be processed using the **Flask backend simulation** and returned for download.*</p>
+                
+                <div id="advancedControls" style="margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #fcfcfc;">
+                    <h5 style="font-weight: 600; color: var(--dark-bg); margin-bottom: 10px;">Configuration Options:</h5>
+                    <!-- Dynamic controls will be inserted here by JavaScript -->
+                </div>
+                
+                <p id="toolMessage" style="color: red; font-weight: 600; margin-top: 10px; display: none;"></p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="process-feedback">
+                    <div class="loader" id="toolLoader"></div>
+                    <button class="btn" id="executeToolBtn" disabled>Execute Tool</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script>
+    // --- Frontend Global Variables ---
+    const toolModal = document.getElementById("toolModal");
+    const closeBtn = document.querySelector(".close-btn");
+    const modalTitle = document.getElementById("modalToolTitle");
+    const dropArea = document.getElementById("dropArea");
+    const fileInput = document.getElementById("fileInput");
+    const executeToolBtn = document.getElementById("executeToolBtn");
+    const toolLoader = document.getElementById("toolLoader");
+    const toolMessage = document.getElementById("toolMessage");
+    const advancedControls = document.getElementById('advancedControls');
+    let uploadedFiles = [];
+
+    // --- Core Reordering Logic ---
+
+    function handleReorderClick(e) {
+        e.stopPropagation(); // Prevent modal interactions from propagating
+        const targetButton = e.currentTarget;
+        const clickedIndex = parseInt(targetButton.getAttribute('data-index'));
+        const isMoveUp = targetButton.classList.contains('move-up');
+        
+        let newIndex = clickedIndex;
+        if (isMoveUp && clickedIndex > 0) {
+            newIndex = clickedIndex - 1;
+        } else if (!isMoveUp && clickedIndex < uploadedFiles.length - 1) {
+            newIndex = clickedIndex + 1;
+        } else {
+            return; // Cannot move further
+        }
+
+        // Swap files in the array
+        [uploadedFiles[clickedIndex], uploadedFiles[newIndex]] = [uploadedFiles[newIndex], uploadedFiles[clickedIndex]];
+
+        // Re-render the display
+        updateFileListDisplay();
+    }
+    
+    function updateFileListDisplay() {
+        // Only run this if files are actually selected
+        if (uploadedFiles.length === 0) return;
+
+        let fileListHTML = `<p style="margin-bottom: 10px; font-weight: 600; color: var(--dark-bg); text-align: left;">${uploadedFiles.length} file(s) ready for processing (use buttons to reorder):</p>`;
+        fileListHTML += `<ul id="reorderableList" style="list-style-type: none; text-align: center; margin: 0 auto; max-width: 95%; font-size: 0.95rem; border: 1px solid #ddd; border-radius: 6px; padding: 0;">`;
+
+        uploadedFiles.forEach((file, index) => {
+            const isFirst = index === 0;
+            const isLast = index === uploadedFiles.length - 1;
+            
+            fileListHTML += `
+                <li data-index="${index}" style="display: flex; justify-content: space-between; align-items: center; padding: 8px 15px; border-bottom: 1px solid #f1f1f1; background-color: ${index % 2 === 0 ? '#fff' : '#fcfcfc'};">
+                    <span style="font-weight: 700; margin-right: 15px; color: var(--primary-color); width: 25px; text-align: left;">${index + 1}.</span>
+                    <span style="flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left;">${file.name}</span>
+                    <div class="reorder-controls">
+                        <button type="button" class="reorder-btn move-up" data-index="${index}" title="Move Up" ${isFirst ? 'disabled' : ''}>▲</button>
+                        <button type="button" class="reorder-btn move-down" data-index="${index}" title="Move Down" ${isLast ? 'disabled' : ''}>▼</button>
+                    </div>
+                </li>
+            `;
+        });
+        fileListHTML += '</ul>';
+
+        // Replace the default upload area content with the interactive list
+        dropArea.innerHTML = fileListHTML; 
+        dropArea.style.borderColor = 'var(--accent-color)';
+        dropArea.style.padding = '15px'; // Reduce padding for list view
+        dropArea.style.cursor = 'default';
+
+        // Re-attach listeners for the new buttons
+        document.querySelectorAll('.reorder-btn').forEach(button => {
+            button.addEventListener('click', handleReorderClick);
+        });
+        
+        executeToolBtn.disabled = false;
+    }
+
+    // --- Utility Functions ---
+    
+    function renderAdvancedControls(toolName) {
+        advancedControls.innerHTML = '<h5 style="font-weight: 600; color: var(--dark-bg); margin-bottom: 10px;">Configuration Options:</h5>'; // Clear existing controls
+
+        let controlsHTML = '';
+
+        switch (toolName) {
+            case 'Merge PDF':
+                // Removed the simple page range input here as the reorder feature is visual now
+                controlsHTML = `
+                    <p style="font-size: 0.9em; color: var(--primary-color); font-style: italic; margin-bottom: 15px;">
+                        Use the ▲/▼ buttons in the upload area above to set the merge order.
+                    </p>
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Output Structure:</label>
+                    <input type="checkbox" id="toc" style="margin-right: 5px;"><label for="toc">Include new Table of Contents</label>
+                `;
+                break;
+                
+            case 'Split PDF':
+                controlsHTML = `
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Split Mode:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); margin-bottom: 10px;">
+                        <option selected>Split by every page</option>
+                        <option>Split by specific page range (e.g., 5, 10, 15)</option>
+                        <option>Split by file size (e.g., max 5MB per file)</option>
+                    </select>
+
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Output Naming:</label>
+                    <input type="text" placeholder="e.g., [originalName]-part_[N]" value="[originalName]-part_[N]" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color);">
+                `;
+                break;
+
+            case 'Compress PDF':
+            case 'Reduce PDF Size':
+                controlsHTML = `
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Compression Preset:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); margin-bottom: 10px;">
+                        <option selected>Web Ready (Recommended - 60% reduction)</option>
+                        <option>Extreme Compression (Max reduction, Lower quality)</option>
+                        <option>Print Ready (Minimal reduction, High quality)</option>
+                    </select>
+
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Color Reduction:</label>
+                    <input type="checkbox" id="grayscale" style="margin-right: 5px;"><label for="grayscale">Convert Images to Grayscale</label>
+                `;
+                break;
+                
+            case 'Add watermark':
+                controlsHTML = `
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Watermark Text:</label>
+                    <input type="text" placeholder="DRAFT / CONFIDENTIAL" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); margin-bottom: 10px;">
+
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Opacity:</label>
+                    <input type="range" min="0" max="100" value="30" oninput="document.getElementById('opacityLabel').textContent=this.value+'%'" style="width: 100%; height: 25px;">
+                    <p style="font-size: 0.8em; color: var(--secondary-color); margin-top: 5px;">Current Opacity: <span id="opacityLabel">30%</span></p>
+                    
+                    <label style="display: block; margin-top: 15px; margin-bottom: 5px; font-size: 0.9em;">Position:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color);">
+                        <option selected>Diagonal (Default)</option>
+                        <option>Top Center</option>
+                        <option>Bottom Right</option>
+                    </select>
+                `;
+                break;
+
+            case 'Protect PDF':
+                controlsHTML = `
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Password:</label>
+                    <input type="password" placeholder="Enter protection password" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); margin-bottom: 10px;">
+                    
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Permissions:</label>
+                    <input type="checkbox" id="print" checked style="margin-right: 5px;"><label for="print">Allow Printing</label><br>
+                    <input type="checkbox" id="copy" style="margin-right: 5px;"><label for="copy">Allow Content Copying</label>
+                `;
+                break;
+            
+            case 'PDF to Word':
+            case 'PDF to Excel':
+                controlsHTML = `
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Conversion Mode:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); margin-bottom: 10px;">
+                        <option selected>Standard Conversion (Layout Focus)</option>
+                        <option>OCR Enhanced (Extract text from images/scans)</option>
+                        <option>Flowing Text (Easier Editing)</option>
+                    </select>
+                `;
+                break;
+
+            case 'Images to PDF':
+            case 'JPG to PDF':
+                controlsHTML = `
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Page Orientation:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); margin-bottom: 10px;">
+                        <option selected>Auto</option>
+                        <option>Portrait</option>
+                        <option>Landscape</option>
+                    </select>
+                    
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Image Size:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color);">
+                        <option selected>Fit to Page (No Margins)</option>
+                        <option>Original Size</option>
+                        <option>Custom Scaling</option>
+                    </select>
+                `;
+                break;
+                
+            case 'HEIC to JPG':
+            case 'WEBP to JPG':
+            case 'PDF to JPG':
+            case 'PDF to Images':
+                controlsHTML = `
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Output Quality:</label>
+                    <input type="range" min="10" max="100" value="90" oninput="document.getElementById('imgQualityLabel').textContent=this.value+'%'" style="width: 100%; height: 25px;">
+                    <p style="font-size: 0.8em; color: var(--secondary-color); margin-top: 5px;">JPG Quality: <span id="imgQualityLabel">90%</span></p>
+
+                    <label style="display: block; margin-top: 15px; margin-bottom: 5px; font-size: 0.9em;">Resize Option:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color);">
+                        <option selected>Original Resolution</option>
+                        <option>Max Width 1920px</option>
+                        <option>Max Width 1024px (Web)</option>
+                    </select>
+                `;
+                break;
+            
+            case 'Rotate PDF pages':
+                controlsHTML = `
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Rotation Angle:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); margin-bottom: 10px;">
+                        <option>90° Clockwise</option>
+                        <option>180°</option>
+                        <option>270° Counter-Clockwise</option>
+                    </select>
+
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Pages to Apply:</label>
+                    <input type="text" placeholder="e.g., all, odd, 1-10, 15" value="all" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color);">
+                `;
+                break;
+
+            case 'Remove PDF pages':
+            case 'Extract PDF pages':
+            case 'Crop PDF':
+                controlsHTML = `
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Page Range/Selection:</label>
+                    <input type="text" placeholder="e.g., 1, 5-8, last" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); margin-bottom: 10px;">
+                    
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Output Handling:</label>
+                    <input type="checkbox" id="combine" checked style="margin-right: 5px;"><label for="combine">Combine into Single Document (Extract only)</label>
+                `;
+                break;
+
+            case 'Add page numbers':
+                controlsHTML = `
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Position:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); margin-bottom: 10px;">
+                        <option>Bottom Center (Default)</option>
+                        <option>Top Right</option>
+                        <option>Bottom Left</option>
+                    </select>
+
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">Start Numbering At:</label>
+                    <input type="number" value="1" min="1" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color);">
+                `;
+                break;
+                
+            default:
+                // Generic conversion/cleanup options for all other tools
+                controlsHTML = `
+                    <label style="display: block; margin-bottom: 5px; font-size: 0.9em;">PDF Compatibility:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color);">
+                        <option selected>Standard PDF (Best Compatibility)</option>
+                        <option>PDF/A-2b (Archival)</option>
+                        <option>PDF/X (Professional Printing)</option>
+                    </select>
+
+                    <label style="display: block; margin-top: 15px; margin-bottom: 5px; font-size: 0.9em;">Metadata Handling:</label>
+                    <select style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color);">
+                        <option selected>Preserve all metadata</option>
+                        <option>Remove all metadata</option>
+                    </select>
+                `;
+                break;
+        }
+
+        advancedControls.innerHTML += controlsHTML;
+    }
+    
+    function openModal(toolName) {
+        modalTitle.textContent = toolName;
+        uploadedFiles = [];
+        executeToolBtn.disabled = true;
+        
+        // Reset drop area to default state
+        dropArea.style.borderColor = 'var(--border-color)';
+        dropArea.innerHTML = '<i class="fas fa-file-upload"></i><p>Drag & Drop your file(s) here or Click to Select</p>';
+        dropArea.style.padding = '40px'; // Reset padding
+        dropArea.style.cursor = 'pointer'; // Reset cursor
+        
+        toolModal.style.display = "block";
+        toolLoader.style.display = 'none';
+        executeToolBtn.textContent = 'Execute Tool';
+        executeToolBtn.classList.remove('btn-success');
+        executeToolBtn.style.backgroundColor = 'var(--primary-color)';
+        toolMessage.style.display = 'none'; // Clear previous messages
+        
+        // Render dynamic controls
+        renderAdvancedControls(toolName);
+
+        // Remove old download listener if present
+        executeToolBtn.onclick = null; 
+    }
+
+    function handleFileSelection(event) {
+        const files = event.target.files || event.dataTransfer.files;
+        if (files.length > 0) {
+            // Replace the entire array with newly selected files
+            uploadedFiles = Array.from(files); 
+            
+            toolMessage.style.display = 'none'; // Hide error message after file selection
+            executeToolBtn.textContent = 'Execute Tool'; // Reset button text
+            executeToolBtn.style.backgroundColor = 'var(--primary-color)'; // Reset button color
+
+            // Check if the current tool is Merge PDF to enable the interactive display
+            if (modalTitle.textContent === 'Merge PDF') {
+                updateFileListDisplay();
+            } else {
+                // For all other tools, display the simple list and keep the original drag area look
+                let fileListHTML = `<i class="fas fa-check-circle" style="color: var(--accent-color);"></i><p style="margin-bottom: 5px;">${uploadedFiles.length} file(s) selected:</p>`;
+                fileListHTML += `<ul style="text-align: left; margin: 0 auto; max-width: 300px; font-size: 0.9rem; list-style-type: none;">`;
+                uploadedFiles.slice(0, 3).forEach(file => {
+                    fileListHTML += `<li style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">- ${file.name}</li>`;
+                });
+                if (uploadedFiles.length > 3) {
+                    fileListHTML += `<li style="font-weight: 600;">...and ${uploadedFiles.length - 3} more.</li>`;
+                }
+                fileListHTML += '</ul>';
+
+                dropArea.innerHTML = fileListHTML;
+                dropArea.style.borderColor = 'var(--accent-color)';
+                dropArea.style.padding = '40px';
+                dropArea.style.cursor = 'pointer';
+                executeToolBtn.disabled = false;
+            }
+        }
+    }
+    
+    // --- Simulated Backend Processing Function ---
+    async function processTool(toolName, files) {
+        // The mock content will now include the ordered file list for 'Merge PDF'
+        const fileOrderForMerge = toolName === 'Merge PDF' ? uploadedFiles.map(f => f.name).join(' -> ') : files.map(f => f.name).join(', ');
+
+        return new Promise(resolve => {
+            setTimeout(() => {
+                const isFailureCase = toolName.toLowerCase().includes('repair pdf');
+                const isNoFileCase = files.length === 0;
+
+                if (isNoFileCase) {
+                     resolve({
+                        success: false,
+                        message: "Error: Please upload at least one file to run this tool."
+                    });
+                } else if (isFailureCase) {
+                    resolve({ 
+                        success: false, 
+                        message: `The **${toolName}** failed to complete. The file structure is too complex or corrupted beyond simulation repair.` 
+                    });
+                } else {
+                    // --- Dynamic Output Configuration ---
+                    let outputMimeType = 'application/pdf'; // Default to PDF for most internal tools
+                    let outputExtension = '.pdf';
+
+                    if (toolName.includes('to Word')) {
+                        outputMimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+                        outputExtension = '.docx';
+                    } else if (toolName.includes('to Excel')) {
+                        outputMimeType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+                        outputExtension = '.xlsx';
+                    } else if (toolName.includes('to PowerPoint')) {
+                        outputMimeType = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+                        outputExtension = '.pptx';
+                    } else if (toolName.includes('to JPG') || toolName.includes('PDF to Images') || toolName.includes('HEIC') || toolName.includes('WEBP')) {
+                        outputMimeType = 'image/jpeg';
+                        outputExtension = '.jpg';
+                    } else if (toolName.includes('to HTML')) {
+                        outputMimeType = 'text/html';
+                        outputExtension = '.html';
+                    } else if (toolName.includes('Create workflow') || toolName.includes('Create PDF job application')) {
+                        // These are typically configuration or simple output files
+                        outputMimeType = 'text/plain'; 
+                        outputExtension = '.txt'; 
+                    } else if (toolName.includes('PDF OCR') || toolName.includes('Edit PDF metadata')) {
+                        // These output a PDF, but let's confirm the mime type
+                        outputMimeType = 'application/pdf';
+                        outputExtension = '.pdf';
+                    }
+
+
+                    const fileNames = files.map(f => f.name).join(', ');
+                    
+                    let mockFileContent;
+                    if (outputMimeType.startsWith('text')) {
+                        mockFileContent = `Simulated successful content for ${outputExtension} file processed by ${toolName}. \n\nInput Order: ${fileOrderForMerge}. \n\nOptions applied: [Simulated configuration values].`;
+                    } else {
+                         // For binary formats (PDF, DOCX, etc.), the content remains generic text for simulation purposes
+                         mockFileContent = `This is simulated content for a binary file type (${outputExtension}) processed by the ${toolName} tool. The final order used was: ${fileOrderForMerge}.`;
+                    }
+                    
+                    // Use the dynamically determined MIME type
+                    const mockDownloadUrl = `data:${outputMimeType};charset=utf-8,${encodeURIComponent(mockFileContent)}`;
+
+                    resolve({ 
+                        success: true, 
+                        download_url: mockDownloadUrl,
+                        message: "Processing complete! Download initiated automatically.",
+                        file_extension: outputExtension // Pass the extension back to the download handler
+                    });
+                }
+            }, 1500); // 1.5 second delay
+        });
+    }
+
+
+    // --- Event Listeners ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    document.querySelectorAll('.tool-list li').forEach(item => {
+        item.addEventListener('click', function() {
+            const toolName = this.getAttribute('data-tool');
+            openModal(toolName);
+        });
+    });
+
+    // Modal Close Events
+    closeBtn.onclick = function() { toolModal.style.display = "none"; }
+    window.onclick = function(event) { if (event.target == toolModal) { toolModal.style.display = "none"; } }
+
+    // Drag and Drop Listeners
+    dropArea.addEventListener('click', () => { 
+        if(dropArea.style.cursor !== 'default') {
+            fileInput.click(); 
+        }
+    });
+    dropArea.addEventListener('dragover', (e) => { 
+        e.preventDefault(); 
+        dropArea.style.borderColor = 'var(--primary-color)'; 
+    });
+    dropArea.addEventListener('dragleave', () => { 
+        dropArea.style.borderColor = uploadedFiles.length > 0 ? 'var(--accent-color)' : 'var(--border-color)'; 
+    });
+    dropArea.addEventListener('drop', (e) => { 
+        e.preventDefault(); 
+        handleFileSelection(e); 
+    });
+    fileInput.addEventListener('change', handleFileSelection);
+
+
+    // --- Core Tool Execution Logic ---
+    executeToolBtn.addEventListener('click', async () => {
+        const toolName = modalTitle.textContent;
+        // Basic check, although the button should be disabled if no files are uploaded
+        if (uploadedFiles.length === 0) {
+            toolMessage.textContent = "Please select file(s) first.";
+            toolMessage.style.color = '#dc3545';
+            toolMessage.style.display = 'block';
+            return;
+        }
+
+        // 1. UI Feedback: Start Loading
+        executeToolBtn.disabled = true;
+        executeToolBtn.textContent = 'Processing...';
+        executeToolBtn.classList.remove('btn-success');
+        executeToolBtn.style.backgroundColor = 'var(--secondary-color)';
+        toolLoader.style.display = 'block';
+        toolMessage.style.display = 'none';
+
+        try {
+            // 2. Simulated Processing Call
+            // Note: uploadedFiles array is passed directly, which for 'Merge PDF' contains the desired order
+            const data = await processTool(toolName, uploadedFiles);
+
+            // 3. Handle response
+            if (data.success) {
+                // Success: Update UI and trigger automatic download
+                toolLoader.style.display = 'none';
+                executeToolBtn.textContent = 'Download Initiated';
+                executeToolBtn.classList.add('btn-success');
+                executeToolBtn.style.backgroundColor = 'var(--accent-color)';
+                executeToolBtn.disabled = true;
+                
+                // Show successful message
+                toolMessage.innerHTML = `<i class="fas fa-check-circle" style="color: var(--accent-color); margin-right: 5px;"></i>${data.message}`;
+                toolMessage.style.color = 'var(--accent-color)';
+                toolMessage.style.display = 'block';
+
+                // --- AUTOMATIC DOWNLOAD LOGIC ---
+                // Create a virtual link to trigger the download of the mock data URL
+                const a = document.createElement('a');
+                a.href = data.download_url;
+                // Use the new file_extension property here!
+                a.download = `${toolName.replace(/\s/g, '_')}_processed${data.file_extension}`; 
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                // Close the modal after a short delay to allow the user to see the success message
+                setTimeout(() => {
+                    toolModal.style.display = "none";
+                }, 1000); 
+                // --- END AUTOMATIC DOWNLOAD LOGIC ---
+
+            } else {
+                // Simulated Error: Show error message
+                toolLoader.style.display = 'none';
+                executeToolBtn.textContent = 'Retry Tool';
+                executeToolBtn.style.backgroundColor = '#dc3545'; /* Red color for error button */
+                executeToolBtn.disabled = false;
+
+                // Show error message
+                toolMessage.innerHTML = `<i class="fas fa-times-circle" style="color: #dc3545; margin-right: 5px;"></i>${data.message}`;
+                toolMessage.style.color = '#dc3545';
+                toolMessage.style.display = 'block';
+            }
+        } catch (error) {
+            // Unexpected code error (not a simulated backend failure)
+            console.error("Execution error:", error);
+            
+            toolLoader.style.display = 'none';
+            executeToolBtn.textContent = 'System Error';
+            executeToolBtn.style.backgroundColor = '#6c757d';
+            
+            toolMessage.innerHTML = `<i class="fas fa-exclamation-triangle" style="color: #6c757d; margin-right: 5px;"></i>An unexpected error occurred. See console.`;
+            toolMessage.style.color = '#6c757d';
+            toolMessage.style.display = 'block';
+
+        }
+    });
+</script>
+</body>
+</html>
